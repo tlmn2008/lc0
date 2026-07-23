@@ -23,8 +23,8 @@
     "default_branch": "corex-port",
     "default_branch_status": "success",
     "compare_url": "https://github.com/tlmn2008/lc0/compare/master...corex-port",
-    "push_commit": "PENDING",
-    "push_status": "pending",
+    "push_commit": "209adb581edd82817f35d393b08ff232856eb251",
+    "push_status": "success",
     "pushed_at": "2026-07-23T18:55:00+08:00"
   },
 
