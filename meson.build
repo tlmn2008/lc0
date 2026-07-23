@@ -461,8 +461,17 @@ if get_option('build_backends')
   cu_blas = cc.find_library('cublas', dirs: cudnn_libdirs, required: false)
   cu_dnn = cc.find_library('cudnn', dirs: cudnn_libdirs, required: false)
   cu_dart = cc.find_library('cudart', dirs: cudnn_libdirs, required: false)
-  nvcc = find_program(nvcc_paths,
-                      required: false)
+  # CoreX (ivcore11): the SDK ships NO nvcc; the CUDA frontend is clang++
+  # invoked as `clang++ -x ivcore --cuda-gpu-arch=ivcore11`. Route .cu
+  # compilation through a wrapper that translates nvcc-style flags to clang.
+  # See scripts/corex_nvcc_wrapper.sh and corex_port/agent/session_notes.md.
+  if get_option('corex_ivcore11')
+    nvcc = find_program(meson.current_source_dir() + '/scripts/corex_nvcc_wrapper.sh',
+                        required: false)
+  else
+    nvcc = find_program(nvcc_paths,
+                        required: false)
+  endif
   nvcc_ok = false
   if get_option('nvcc') and nvcc.found()
     foreach d : get_option('cudnn_include')

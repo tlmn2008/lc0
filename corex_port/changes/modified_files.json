@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "path": "meson.build",
+      "action": "edit",
+      "reason": "When -Dcorex_ivcore11=true, route .cu compilation through scripts/corex_nvcc_wrapper.sh (clang++ -x ivcore) instead of nvcc, which the CoreX SDK does not ship."
+    },
+    {
+      "path": "meson_options.txt",
+      "action": "edit",
+      "reason": "Add boolean option 'corex_ivcore11' (default false) to enable the CoreX clang++ CUDA path without affecting upstream/NVIDIA builds."
+    },
+    {
+      "path": "src/neural/backends/cuda/fp16_kernels.cu",
+      "action": "edit",
+      "reason": "Bypass '#if __CUDA_ARCH__ >= 530' / '< 530' arch gates via __ILUVATAR__ so real fp16 kernel bodies compile on ivcore11 (device __CUDA_ARCH__ reports 300)."
+    },
+    {
+      "path": "scripts/corex_nvcc_wrapper.sh",
+      "action": "add",
+      "reason": "New nvcc-compatible wrapper: answers meson -h/--dryrun probes and translates nvcc-style flags to clang++ -x ivcore --cuda-gpu-arch=ivcore11, dropping nvcc-only flags."
+    }
+  ]
+}

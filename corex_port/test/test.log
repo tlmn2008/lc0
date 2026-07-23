@@ -1,0 +1,375 @@
+############################################################
+### RUN: chessboard_test
+############################################################
+[==========] Running 21 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 21 tests from ChessBoard
+[ RUN      ] ChessBoard.IllegalFirstRankPawns
+[       OK ] ChessBoard.IllegalFirstRankPawns (0 ms)
+[ RUN      ] ChessBoard.PseudolegalMovesStartingPos
+[       OK ] ChessBoard.PseudolegalMovesStartingPos (0 ms)
+[ RUN      ] ChessBoard.PartialFen
+[       OK ] ChessBoard.PartialFen (0 ms)
+[ RUN      ] ChessBoard.PartialFenWithSpaces
+[       OK ] ChessBoard.PartialFenWithSpaces (0 ms)
+[ RUN      ] ChessBoard.MoveGenKiwipete
+[       OK ] ChessBoard.MoveGenKiwipete (4721 ms)
+[ RUN      ] ChessBoard.MoveGenPosition3
+[       OK ] ChessBoard.MoveGenPosition3 (15046 ms)
+[ RUN      ] ChessBoard.MoveGenPosition4
+[       OK ] ChessBoard.MoveGenPosition4 (19148 ms)
+[ RUN      ] ChessBoard.MoveGenPosition5
+[       OK ] ChessBoard.MoveGenPosition5 (2443 ms)
+[ RUN      ] ChessBoard.MoveGenPosition6
+[       OK ] ChessBoard.MoveGenPosition6 (4282 ms)
+[ RUN      ] ChessBoard.FRC
+[       OK ] ChessBoard.FRC (13945 ms)
+[ RUN      ] ChessBoard.HasMatingMaterialStartPosition
+[       OK ] ChessBoard.HasMatingMaterialStartPosition (0 ms)
+[ RUN      ] ChessBoard.HasMatingMaterialBareKings
+[       OK ] ChessBoard.HasMatingMaterialBareKings (0 ms)
+[ RUN      ] ChessBoard.HasMatingMaterialSingleMinorPiece
+[       OK ] ChessBoard.HasMatingMaterialSingleMinorPiece (0 ms)
+[ RUN      ] ChessBoard.HasMatingMaterialSingleMajorPieceOrPawn
+[       OK ] ChessBoard.HasMatingMaterialSingleMajorPieceOrPawn (0 ms)
+[ RUN      ] ChessBoard.HasMatingMaterialTwoKnights
+[       OK ] ChessBoard.HasMatingMaterialTwoKnights (0 ms)
+[ RUN      ] ChessBoard.HasMatingMaterialBishopAndKnight
+[       OK ] ChessBoard.HasMatingMaterialBishopAndKnight (0 ms)
+[ RUN      ] ChessBoard.HasMatingMaterialMultipleBishopsSameColor
+[       OK ] ChessBoard.HasMatingMaterialMultipleBishopsSameColor (0 ms)
+[ RUN      ] ChessBoard.HasMatingMaterialMultipleBishopsNotSameColor
+[       OK ] ChessBoard.HasMatingMaterialMultipleBishopsNotSameColor (0 ms)
+[ RUN      ] ChessBoard.InvalidFEN
+[       OK ] ChessBoard.InvalidFEN (0 ms)
+[ RUN      ] ChessBoard.InvalidEnPassantFromKnightPromotion
+[       OK ] ChessBoard.InvalidEnPassantFromKnightPromotion (0 ms)
+[ RUN      ] ChessBoard.QueenMoveFromEnPassantFlagBug
+[       OK ] ChessBoard.QueenMoveFromEnPassantFlagBug (0 ms)
+[----------] 21 tests from ChessBoard (59588 ms total)
+
+[----------] Global test environment tear-down
+[==========] 21 tests from 1 test suite ran. (59588 ms total)
+[  PASSED  ] 21 tests.
+### EXIT(chessboard_test)=0
+
+############################################################
+### RUN: fp16_test
+############################################################
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FP16
+[ RUN      ] FP16.TestNormalConversion
+[       OK ] FP16.TestNormalConversion (0 ms)
+[----------] 1 test from FP16 (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+### EXIT(fp16_test)=0
+
+############################################################
+### RUN: hashcat_test
+############################################################
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from HashCat
+[ RUN      ] HashCat.TestCollision
+[       OK ] HashCat.TestCollision (0 ms)
+[----------] 1 test from HashCat (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+### EXIT(hashcat_test)=0
+
+############################################################
+### RUN: position_test
+############################################################
+[==========] Running 8 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 1 test from Position
+[ RUN      ] Position.SetFenGetFen
+[       OK ] Position.SetFenGetFen (0 ms)
+[----------] 1 test from Position (0 ms total)
+
+[----------] 7 tests from PositionHistory
+[ RUN      ] PositionHistory.ComputeLastMoveRepetitionsWithoutLegalEnPassant
+[       OK ] PositionHistory.ComputeLastMoveRepetitionsWithoutLegalEnPassant (0 ms)
+[ RUN      ] PositionHistory.ComputeLastMoveRepetitionsWithLegalEnPassant
+[       OK ] PositionHistory.ComputeLastMoveRepetitionsWithLegalEnPassant (0 ms)
+[ RUN      ] PositionHistory.DidRepeatSinceLastZeroingMoveCurent
+[       OK ] PositionHistory.DidRepeatSinceLastZeroingMoveCurent (0 ms)
+[ RUN      ] PositionHistory.DidRepeatSinceLastZeroingMoveBefore
+[       OK ] PositionHistory.DidRepeatSinceLastZeroingMoveBefore (0 ms)
+[ RUN      ] PositionHistory.DidRepeatSinceLastZeroingMoveOlder
+[       OK ] PositionHistory.DidRepeatSinceLastZeroingMoveOlder (0 ms)
+[ RUN      ] PositionHistory.DidRepeatSinceLastZeroingMoveBeforeZero
+[       OK ] PositionHistory.DidRepeatSinceLastZeroingMoveBeforeZero (0 ms)
+[ RUN      ] PositionHistory.DidRepeatSinceLastZeroingMoveNeverRepeated
+[       OK ] PositionHistory.DidRepeatSinceLastZeroingMoveNeverRepeated (0 ms)
+[----------] 7 tests from PositionHistory (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 8 tests from 2 test suites ran. (0 ms total)
+[  PASSED  ] 8 tests.
+### EXIT(position_test)=0
+
+############################################################
+### RUN: optionsparser_test
+############################################################
+[==========] Running 5 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 5 tests from OptionsParser
+[ RUN      ] OptionsParser.CheckInvalidOption
+[       OK ] OptionsParser.CheckInvalidOption (0 ms)
+[ RUN      ] OptionsParser.IntOptionCheckValueConstraints
+[       OK ] OptionsParser.IntOptionCheckValueConstraints (0 ms)
+[ RUN      ] OptionsParser.FloatOptionCheckValueConstraints
+[       OK ] OptionsParser.FloatOptionCheckValueConstraints (0 ms)
+[ RUN      ] OptionsParser.BoolOptionsCheckValueConstraints
+[       OK ] OptionsParser.BoolOptionsCheckValueConstraints (0 ms)
+[ RUN      ] OptionsParser.ChoiceOptionCheckValueConstraints
+[       OK ] OptionsParser.ChoiceOptionCheckValueConstraints (0 ms)
+[----------] 5 tests from OptionsParser (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 5 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 5 tests.
+### EXIT(optionsparser_test)=0
+
+############################################################
+### RUN: syzygy_test
+############################################################
+[==========] Running 5 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 5 tests from Syzygy
+[ RUN      ] Syzygy.Simple3PieceProbes
+[       OK ] Syzygy.Simple3PieceProbes (4 ms)
+[ RUN      ] Syzygy.Root3PieceProbes
+[       OK ] Syzygy.Root3PieceProbes (3 ms)
+[ RUN      ] Syzygy.Simple4PieceProbes
+[       OK ] Syzygy.Simple4PieceProbes (3 ms)
+[ RUN      ] Syzygy.Simple5PieceProbes
+[       OK ] Syzygy.Simple5PieceProbes (3 ms)
+[ RUN      ] Syzygy.Root5PieceProbes
+[       OK ] Syzygy.Root5PieceProbes (3 ms)
+[----------] 5 tests from Syzygy (17 ms total)
+
+[----------] Global test environment tear-down
+[==========] 5 tests from 1 test suite ran. (17 ms total)
+[  PASSED  ] 5 tests.
+### EXIT(syzygy_test)=0
+
+############################################################
+### RUN: encoder_test
+############################################################
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from EncodePositionForNN
+[ RUN      ] EncodePositionForNN.EncodeStartPosition
+[       OK ] EncodePositionForNN.EncodeStartPosition (0 ms)
+[ RUN      ] EncodePositionForNN.EncodeStartPositionFormat2
+[       OK ] EncodePositionForNN.EncodeStartPositionFormat2 (0 ms)
+[ RUN      ] EncodePositionForNN.EncodeStartPositionFormat3
+[       OK ] EncodePositionForNN.EncodeStartPositionFormat3 (0 ms)
+[ RUN      ] EncodePositionForNN.EncodeFiftyMoveCounter
+[       OK ] EncodePositionForNN.EncodeFiftyMoveCounter (0 ms)
+[ RUN      ] EncodePositionForNN.EncodeFiftyMoveCounterFormat3
+[       OK ] EncodePositionForNN.EncodeFiftyMoveCounterFormat3 (0 ms)
+[ RUN      ] EncodePositionForNN.EncodeEndGameFormat1
+[       OK ] EncodePositionForNN.EncodeEndGameFormat1 (0 ms)
+[ RUN      ] EncodePositionForNN.EncodeEndGameFormat3
+[       OK ] EncodePositionForNN.EncodeEndGameFormat3 (0 ms)
+[ RUN      ] EncodePositionForNN.EncodeEndGameKingOnDiagonalFormat3
+[       OK ] EncodePositionForNN.EncodeEndGameKingOnDiagonalFormat3 (0 ms)
+[ RUN      ] EncodePositionForNN.EncodeEnpassantFormat3
+[       OK ] EncodePositionForNN.EncodeEnpassantFormat3 (0 ms)
+[ RUN      ] EncodePositionForNN.EncodeEarlyGameFlipFormat3
+[       OK ] EncodePositionForNN.EncodeEarlyGameFlipFormat3 (0 ms)
+[----------] 10 tests from EncodePositionForNN (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 10 tests.
+### EXIT(encoder_test)=0
+
+############################################################
+### RUN: engine_test
+############################################################
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EngineTest
+[ RUN      ] EngineTest.BackendReloadByUpdateBackendConfig
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: StartClock()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: NewGame()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: AbortSearch()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: WaitSearch()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: StartClock()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - taking default action specified at:
+../src/engine_test.cc:54:
+    Function call: GetName()
+          Returns: "mock"
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - taking default action specified at:
+../src/engine_test.cc:55:
+    Function call: Create(@0x5af0751607b0 360-byte object <E0-07 16-75 F0-5A 00-00 01-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 80-3F 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 18-08 16-75 F0-5A 00-00 ... 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 D8-08 16-75 F0-5A 00-00 D8-08 16-75 F0-5A 00-00 00-00 00-00 00-00 00-00 A0-D7 15-75 F0-5A 00-00 A8-D7 15-75 F0-5A 00-00 A8-D7 15-75 F0-5A 00-00>)
+          Returns: (ptr = 0x5af0751623f0, value = 16-byte object <F0-B1 FA-4E F0-5A 00-00 00-00 00-00 00-00 00-00>)
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning default value.
+    Function call: GetAttributes()
+          Returns: 16-byte object <00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00>
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: SetBackend(0x5af075161aa0)
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: SetPosition(@0x7ffe6a0be138 88-byte object <FF-FF 00-00 00-00 00-00 00-00 00-00 00-00 FF-FF 89-00 00-00 00-00 00-89 2C-00 00-00 00-00 00-2C 00-FF 00-00 00-00 FF-00 04-3C 00-00 07-07 0F-00 00-00 00-00 00-00 00-00 00-00 00-00 01-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00>)
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: NewGame()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: AbortSearch()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: WaitSearch()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: StartClock()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: StartClock()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: SetPosition(@0x7ffe6a0be138 88-byte object <FF-FF 00-00 00-00 00-00 00-00 00-00 00-00 FF-FF 89-00 00-00 00-00 00-89 2C-00 00-00 00-00 00-2C 00-FF 00-00 00-00 FF-00 04-3C 00-00 07-07 0F-00 00-00 00-00 00-00 00-00 00-00 00-00 01-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00>)
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: StartClock()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: SetPosition(@0x7ffe6a0be138 88-byte object <FF-FF 00-00 00-00 00-00 00-00 00-00 00-00 FF-FF 89-00 00-00 00-00 00-89 2C-00 00-00 00-00 00-2C 00-FF 00-00 00-00 FF-00 04-3C 00-00 07-07 0F-00 00-00 00-00 00-00 00-00 00-00 00-00 01-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00>)
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: NewGame()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: AbortSearch()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: WaitSearch()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: StartClock()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - taking default action specified at:
+../src/engine_test.cc:54:
+    Function call: GetName()
+          Returns: "mock"
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - taking default action specified at:
+../src/engine_test.cc:55:
+    Function call: Create(@0x5af0751607b0 360-byte object <E0-07 16-75 F0-5A 00-00 01-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 80-3F 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 18-08 16-75 F0-5A 00-00 ... 00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00 D8-08 16-75 F0-5A 00-00 D8-08 16-75 F0-5A 00-00 00-00 00-00 00-00 00-00 A0-D7 15-75 F0-5A 00-00 A8-D7 15-75 F0-5A 00-00 A8-D7 15-75 F0-5A 00-00>)
+          Returns: (ptr = 0x5af075164420, value = 16-byte object <F0-B1 FA-4E F0-5A 00-00 00-00 00-00 00-00 00-00>)
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning default value.
+    Function call: GetAttributes()
+          Returns: 16-byte object <00-00 00-00 00-00 00-00 00-00 00-00 00-00 00-00>
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: SetBackend(0x5af075163d90)
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: AbortSearch()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+
+GMOCK WARNING:
+Uninteresting mock function call - returning directly.
+    Function call: WaitSearch()
+NOTE: You can safely ignore the above warning unless this call should not happen.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to enforce the call.  See https://github.com/google/googletest/blob/main/docs/gmock_cook_book.md#knowing-when-to-expect-useoncall for details.
+[       OK ] EngineTest.BackendReloadByUpdateBackendConfig (92 ms)
+[----------] 1 test from EngineTest (92 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (92 ms total)
+[  PASSED  ] 1 test.
+### EXIT(engine_test)=0
+
+############################################################
+### Registered backends (proves CUDA backends compiled+registered)
+############################################################
+Unhandled exception: Flag '--backend' must be one of the following values: cudnn-auto cudnn cudnn-fp16 cuda-auto cuda cuda-fp16 eigen trivial random check roundrobin recordreplay multiplexing demux.
+
+############################################################
+### Supplementary GPU kernel execution smoke (ivcore11, not part of gtest suite)
+### src: corex_port/build/gpu_smoke.cu  built: clang++ -x ivcore --cuda-gpu-arch=ivcore11
+############################################################
+device=Iluvatar BI-V150 sync=no error max_error=0.000000
+gpu_smoke exit=0
+
+### NOTE: 'lc0 benchmark' full inference smoke SKIPPED - no network weights file
+### available in offline CoreX env (storage.lczero.org unreachable).

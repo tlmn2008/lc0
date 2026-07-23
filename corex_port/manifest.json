@@ -1,0 +1,49 @@
+{
+  "repo_name": "lc0",
+  "repo_url": "https://github.com/LeelaChessZero/lc0",
+  "source_commit": "d8ce48258c39d331c119f8c8729374ceb3df8409",
+  "source_commit_date": "2026-05-06T01:05:03+03:00",
+  "source_branch": "master",
+  "migration_started_at": "2026-07-23T18:23:00+08:00",
+  "migration_finished_at": "2026-07-23T18:55:00+08:00",
+  "sdk_version": "/usr/local/corex (IX-ML 4.4.0, Driver 4.5.0, CUDA 10.2, clang 22.1.0)",
+  "skill_version": "corex-CUDA-compatible-migration@1.0",
+
+  "compile_status": "success",
+  "test_status": "all_pass",
+  "overall_status": "migrated",
+  "tests_run": 52,
+  "tests_passed": 52,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+
+  "github": {
+    "fork_url": "https://github.com/tlmn2008/lc0",
+    "branch": "corex-port",
+    "default_branch": "corex-port",
+    "default_branch_status": "success",
+    "compare_url": "https://github.com/tlmn2008/lc0/compare/master...corex-port",
+    "push_commit": "PENDING",
+    "push_status": "pending",
+    "pushed_at": "2026-07-23T18:55:00+08:00"
+  },
+
+  "local_logs": {
+    "compile_log": "/home/repos/lc0/corex_port/build/compile.log",
+    "test_log": "/home/repos/lc0/corex_port/test/test.log"
+  },
+
+  "summary": "将 lc0 国际象棋引擎的 CUDA 后端迁移到 Iluvatar CoreX (ivcore11)：用 clang++ -x ivcore 替代缺失的 nvcc，旁路 fp16 的 __CUDA_ARCH__>=530 门控。编译成功，plain-CUDA 与 cuDNN 后端均注册可用；完整 gtest 套件 52/52 通过。",
+  "key_adaptations": [
+    "新增 scripts/corex_nvcc_wrapper.sh 作为 nvcc 替身，翻译 nvcc flag 到 clang++ -x ivcore --cuda-gpu-arch=ivcore11，剥离 -arch/-gencode/-Xcompiler 等 nvcc-only 选项",
+    "meson.build 新增 -Dcorex_ivcore11 开关以启用 CoreX clang++ 编译路径，不影响上游 NVIDIA 构建",
+    "fp16_kernels.cu 用 defined(__ILUVATAR__) 旁路 __CUDA_ARCH__>=530 门控，避免真实 fp16 kernel 被静默裁成空壳",
+    "启用 cudnn+plain_cuda，关闭 Ampere-only 的 CUTLASS；链接 CoreX 的 libcudnn.so.7/libcublas.so.10/libcudart.so.10.2"
+  ],
+  "terminal_blockers": [],
+  "workaround_blockers": [
+    "CoreX 无 nvcc：由 corex_nvcc_wrapper.sh(clang++) 解决",
+    "fp16 __CUDA_ARCH__>=530 门控在 ivcore11 失效：由 __ILUVATAR__ 旁路解决",
+    "CUTLASS 需 Ampere(Sm80)：作为可选特性按范围关闭"
+  ]
+}

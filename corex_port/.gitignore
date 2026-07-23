@@ -1,0 +1,10 @@
+# Root .gitignore ignores build/ globally; re-include the small evidence files
+# under corex_port/build/ while still excluding the large *.log compile logs.
+!build/
+build/*.log
+!build/build_command.txt
+!build/gpu_smoke.cu
+env/*.log
+!env/ixsmi.log
+!env/clang_version.txt
+# NOTE: test/test.log MUST be committed (authoritative per-case evidence) — not ignored.

@@ -1,0 +1,25 @@
+{
+  "skill": "iluvatar-cuda-base",
+  "cases_consulted": [
+    {
+      "case": "nvcc-flag-translation",
+      "topic": "迁移/构建: nvcc 编译选项 -> corex clang 翻译表",
+      "applied": "确认 CoreX 上 .cu 编译入口为 clang++ -x ivcore --cuda-path=/usr/local/corex --cuda-gpu-arch=ivcore11；据此实现 corex_nvcc_wrapper.sh，剥离 -arch/-gencode/-code/-Xcompiler/-Wno-deprecated-gpu-targets 等 nvcc-only flag。"
+    },
+    {
+      "case": "NV 530/700 数值 gate 静默裁掉 fp16 / 高架构路径",
+      "topic": "硬件/arch: hardware-arch.md",
+      "applied": "fp16_kernels.cu 的 '#if __CUDA_ARCH__ >= 530' 在 ivcore11(设备端 __CUDA_ARCH__=300)会把真实 fp16 kernel body 裁掉；用 defined(__ILUVATAR__) 旁路修复。"
+    },
+    {
+      "case": "nvcc-shell-stub-detect / corex nvcc 是 script stub",
+      "topic": "迁移/构建",
+      "applied": "核对 CoreX 未安装任何 nvcc（含 stub），确认必须走 clang++ 路径，禁止创建假 nvcc。"
+    },
+    {
+      "case": "__ILUVATAR__ macro-defined-probe",
+      "topic": "硬件/arch",
+      "applied": "实测确认 clang++ -x ivcore 在 host+device 两个 pass 均定义 __ILUVATAR__，可安全用作平台门控宏。"
+    }
+  ]
+}

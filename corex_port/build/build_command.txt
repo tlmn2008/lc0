@@ -1,0 +1,18 @@
+# CoreX ivcore11 build (Iluvatar BI-V150)
+. /etc/profile.d/corex.sh
+export LD_LIBRARY_PATH=/usr/local/openmpi/lib:/usr/local/corex/lib64:/usr/local/corex/lib:$LD_LIBRARY_PATH
+export PATH=/usr/local/corex/bin:$PATH
+export CUDA_VISIBLE_DEVICES=0
+
+# .cu compiled by scripts/corex_nvcc_wrapper.sh (clang++ -x ivcore --cuda-gpu-arch=ivcore11)
+CC=clang CXX=clang++ meson setup build \
+  -Dcorex_ivcore11=true \
+  -Dplain_cuda=true \
+  -Dcudnn=true \
+  -Dcutlass=false \
+  -Dgtest=true \
+  -Dcudnn_libdirs=/usr/local/corex/lib64 \
+  -Dcudnn_include=/usr/local/corex/include \
+  -Dnative_cuda=false
+
+ninja -C build
