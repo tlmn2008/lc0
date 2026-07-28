@@ -16,9 +16,8 @@
   "tests_failed": 0,
   "tests_skipped": 0,
   "upstream_assessment": {
-    "upstreamable": "partial",
-    "nvidia_compatible": "guarded",
-    "notes": "CoreX 支持以 meson -Dcorex_ivcore11(默认 false)开关引入 nvcc-wrapper，默认构建不变;fp16 arch gate 改为 defined(__ILUVATAR__)||(__CUDA_ARCH__>=530)，NVIDIA 分支不变。作为 opt-in CoreX 后端可回上游;nvcc-wrapper 脚本属 CoreX 专属。CLA 需签，上游 CI 无 ivcore11。"
+    "upstream_status": "ready",
+    "notes": "CoreX 支持以 meson -Dcorex_ivcore11(默认 false)开关引入 nvcc-wrapper,默认构建不变;fp16 arch gate 改为 defined(__ILUVATAR__)||(__CUDA_ARCH__>=530),NVIDIA 分支不变——作为 opt-in CoreX 后端可直接提 PR(nvcc-wrapper 脚本属 CoreX 专属)。CLA 需签,上游 CI 无 ivcore11。"
   },
   "bugfixes": [],
   "github": {
