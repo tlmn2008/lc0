@@ -8,7 +8,6 @@
   "migration_finished_at": "2026-07-23T18:55:00+08:00",
   "sdk_version": "/usr/local/corex (IX-ML 4.4.0, Driver 4.5.0, CUDA 10.2, clang 22.1.0)",
   "skill_version": "corex-CUDA-compatible-migration@1.0",
-
   "compile_status": "success",
   "test_status": "all_pass",
   "overall_status": "migrated",
@@ -16,7 +15,12 @@
   "tests_passed": 52,
   "tests_failed": 0,
   "tests_skipped": 0,
-
+  "upstream_assessment": {
+    "upstreamable": "partial",
+    "nvidia_compatible": "guarded",
+    "notes": "CoreX 支持以 meson -Dcorex_ivcore11(默认 false)开关引入 nvcc-wrapper，默认构建不变;fp16 arch gate 改为 defined(__ILUVATAR__)||(__CUDA_ARCH__>=530)，NVIDIA 分支不变。作为 opt-in CoreX 后端可回上游;nvcc-wrapper 脚本属 CoreX 专属。CLA 需签，上游 CI 无 ivcore11。"
+  },
+  "bugfixes": [],
   "github": {
     "fork_url": "https://github.com/tlmn2008/lc0",
     "branch": "corex-port",
@@ -27,12 +31,10 @@
     "push_status": "success",
     "pushed_at": "2026-07-23T18:55:00+08:00"
   },
-
   "local_logs": {
     "compile_log": "/home/repos/lc0/corex_port/build/compile.log",
     "test_log": "/home/repos/lc0/corex_port/test/test.log"
   },
-
   "summary": "将 lc0 国际象棋引擎的 CUDA 后端迁移到 Iluvatar CoreX (ivcore11)：用 clang++ -x ivcore 替代缺失的 nvcc，旁路 fp16 的 __CUDA_ARCH__>=530 门控。编译成功，plain-CUDA 与 cuDNN 后端均注册可用；完整 gtest 套件 52/52 通过。",
   "key_adaptations": [
     "新增 scripts/corex_nvcc_wrapper.sh 作为 nvcc 替身，翻译 nvcc flag 到 clang++ -x ivcore --cuda-gpu-arch=ivcore11，剥离 -arch/-gencode/-Xcompiler 等 nvcc-only 选项",
