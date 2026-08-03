@@ -1,15 +1,16 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "repo": "lc0",
+  "target": "BI-V150",
   "blockers": [
     {
       "id": "1",
-      "symptom": "CoreX SDK ships no nvcc (red line: no nvcc); lc0 meson.build drives .cu compilation through an nvcc-style program.",
-      "classification": "workaround-able",
-      "resolved": true,
+      "desc": "CoreX SDK ships no nvcc (red line: no nvcc); lc0 meson.build drives .cu compilation through an nvcc-style program.",
+      "verdict": "workaround",
+      "status": "fixed",
       "file": "meson.build / scripts/corex_nvcc_wrapper.sh",
-      "final_verdict": "CUDA + cuDNN backends build with clang++ (ivcore11); .cu -> .o via wrapper.",
-      "error_snippet": "no nvcc on PATH; CUDA frontend on CoreX is clang++ -x ivcore --cuda-gpu-arch=ivcore11",
+      "error": "no nvcc on PATH; CUDA frontend on CoreX is clang++ -x ivcore --cuda-gpu-arch=ivcore11",
+      "root_cause": "结论: CUDA + cuDNN backends build with clang++ (ivcore11); .cu -> .o via wrapper.",
       "attempts": [
         {
           "action": "Add corex_nvcc_wrapper.sh that answers meson probes (-h/--dryrun) and translates nvcc flags to clang++ -x ivcore, dropping -arch/-gencode/-code/-Xcompiler/-Wno-deprecated-gpu-targets; gate it behind a new -Dcorex_ivcore11 meson option.",
@@ -19,12 +20,12 @@
     },
     {
       "id": "2",
-      "symptom": "fp16 kernels gated behind '#if __CUDA_ARCH__ >= 530'; on ivcore11 device __CUDA_ARCH__ reports 300, so real fp16 kernel bodies would be silently compiled out (SKIP_FP16_BITS empty-kernel fallback) -> silent-wrong runtime, not a compile error.",
-      "classification": "workaround-able",
-      "resolved": true,
+      "desc": "fp16 kernels gated behind '#if __CUDA_ARCH__ >= 530'; on ivcore11 device __CUDA_ARCH__ reports 300, so real fp16 kernel bodies would be silently compiled out (SKIP_FP16_BITS empty-kernel fallback) -> silent-wrong runtime, not a compile error.",
+      "verdict": "workaround",
+      "status": "fixed",
       "file": "src/neural/backends/cuda/fp16_kernels.cu",
-      "final_verdict": "fp16 kernels compile with real bodies on ivcore11; fp16_kernels.cu builds clean, cuda-fp16 / cudnn-fp16 backends register.",
-      "error_snippet": "#if __CUDA_ARCH__ < 530 -> #define SKIP_FP16_BITS 1 ; #if __CUDA_ARCH__ >= 530 (x2)",
+      "error": "#if __CUDA_ARCH__ < 530 -> #define SKIP_FP16_BITS 1 ; #if __CUDA_ARCH__ >= 530 (x2)",
+      "root_cause": "结论: fp16 kernels compile with real bodies on ivcore11; fp16_kernels.cu builds clean, cuda-fp16 / cudnn-fp16 backends register.",
       "attempts": [
         {
           "action": "Bypass the NV arch gate via __ILUVATAR__ (compat-index case: 'NV 530/700 numeric gate silently cuts fp16 paths'): '#if defined(__ILUVATAR__) || (__CUDA_ARCH__ >= 530)' and '#if !defined(__ILUVATAR__) && (__CUDA_ARCH__ < 530)'.",
@@ -34,12 +35,12 @@
     },
     {
       "id": "3",
-      "symptom": "CUTLASS backend (cutlass_kernels.cu) targets cutlass::arch::Sm80 (Ampere+); ivcore11 (BI-V150) is not Ampere and CoreX reports max_cuda arch 0.",
-      "classification": "workaround-able",
-      "resolved": true,
+      "desc": "CUTLASS backend (cutlass_kernels.cu) targets cutlass::arch::Sm80 (Ampere+); ivcore11 (BI-V150) is not Ampere and CoreX reports max_cuda arch 0.",
+      "verdict": "workaround",
+      "status": "fixed",
       "file": "src/neural/backends/cuda/cutlass_kernels.cu",
-      "final_verdict": "CUTLASS is an optional Ampere-only acceleration path; excluded as out-of-scope for ivcore11. Not a terminal blocker for the CUDA backend.",
-      "error_snippet": "AttentionKernel<..., cutlass::arch::Sm80, ...>",
+      "error": "AttentionKernel<..., cutlass::arch::Sm80, ...>",
+      "root_cause": "结论: CUTLASS is an optional Ampere-only acceleration path; excluded as out-of-scope for ivcore11. Not a terminal blocker for the CUDA backend.",
       "attempts": [
         {
           "action": "Disable optional CUTLASS backend (-Dcutlass=false); meson also auto-gates it on max_cuda>=800 which is unmet. Core CUDA (plain_cuda) + cuDNN backends fully cover lc0 GPU inference without CUTLASS.",

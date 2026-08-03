@@ -40,11 +40,5 @@
     "meson.build 新增 -Dcorex_ivcore11 开关以启用 CoreX clang++ 编译路径，不影响上游 NVIDIA 构建",
     "fp16_kernels.cu 用 defined(__ILUVATAR__) 旁路 __CUDA_ARCH__>=530 门控，避免真实 fp16 kernel 被静默裁成空壳",
     "启用 cudnn+plain_cuda，关闭 Ampere-only 的 CUTLASS；链接 CoreX 的 libcudnn.so.7/libcublas.so.10/libcudart.so.10.2"
-  ],
-  "terminal_blockers": [],
-  "workaround_blockers": [
-    "CoreX 无 nvcc：由 corex_nvcc_wrapper.sh(clang++) 解决",
-    "fp16 __CUDA_ARCH__>=530 门控在 ivcore11 失效：由 __ILUVATAR__ 旁路解决",
-    "CUTLASS 需 Ampere(Sm80)：作为可选特性按范围关闭"
   ]
 }

@@ -3,9 +3,7 @@
   "tests_passed": 52,
   "tests_failed": 0,
   "tests_skipped": 0,
-  "suite": "lc0 full gtest suite (all 8 meson-registered test targets, per-case counts)",
   "run_command": "for t in chessboard_test fp16_test hashcat_test position_test optionsparser_test syzygy_test encoder_test engine_test; do ./build/$t; done  (also verified via: meson test -C build)",
-  "scope_note": "Ran the repository's complete gtest suite (every test target, every gtest case). No cherry-picking. CUDA/cuDNN backends compiled+linked+registered; a supplementary raw ivcore11 GPU kernel smoke (SAXPY) also ran on GPU 0.",
   "metrics": [
     {
       "name": "gtest_all",
@@ -29,5 +27,6 @@
       "device": "GPU 0 (Iluvatar BI-V150)",
       "source": "corex_port/build/gpu_smoke.cu compiled with clang++ -x ivcore --cuda-gpu-arch=ivcore11; verifies device kernel execution + D2H/H2D on ivcore11"
     }
-  ]
+  ],
+  "notes": "suite: lc0 full gtest suite (all 8 meson-registered test targets, per-case counts)\nscope_note: Ran the repository's complete gtest suite (every test target, every gtest case). No cherry-picking. CUDA/cuDNN backends compiled+linked+registered; a supplementary raw ivcore11 GPU kernel smoke (SAXPY) also ran on GPU 0."
 }
