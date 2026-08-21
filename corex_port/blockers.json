@@ -13,7 +13,7 @@
       "root_cause": "结论: CUDA + cuDNN backends build with clang++ (ivcore11); .cu -> .o via wrapper.",
       "attempts": [
         {
-          "action": "Add corex_nvcc_wrapper.sh that answers meson probes (-h/--dryrun) and translates nvcc flags to clang++ -x ivcore, dropping -arch/-gencode/-code/-Xcompiler/-Wno-deprecated-gpu-targets; gate it behind a new -Dcorex_ivcore11 meson option.",
+          "action": "Add corex_nvcc_wrapper.sh that answers meson probes (-h/--dryrun) and translates nvcc flags to clang++ -x ivcore, dropping -arch/-gencode/-code/-Xcompiler/-Wno-deprecated-gpu-targets; gate it behind a new -Dcorex meson option.",
           "result": "resolved"
         }
       ]

@@ -465,7 +465,7 @@ if get_option('build_backends')
   # invoked as `clang++ -x ivcore --cuda-gpu-arch=ivcore11`. Route .cu
   # compilation through a wrapper that translates nvcc-style flags to clang.
   # See scripts/corex_nvcc_wrapper.sh and corex_port/agent/session_notes.md.
-  if get_option('corex_ivcore11')
+  if get_option('corex')
     nvcc = find_program(meson.current_source_dir() + '/scripts/corex_nvcc_wrapper.sh',
                         required: false)
   else

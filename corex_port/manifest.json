@@ -17,7 +17,7 @@
   "tests_skipped": 0,
   "upstream_assessment": {
     "upstream_status": "ready",
-    "notes": "CoreX 支持以 meson -Dcorex_ivcore11(默认 false)开关引入 nvcc-wrapper,默认构建不变;fp16 arch gate 改为 defined(__ILUVATAR__)||(__CUDA_ARCH__>=530),NVIDIA 分支不变——作为 opt-in CoreX 后端可直接提 PR(nvcc-wrapper 脚本属 CoreX 专属)。CLA 需签,上游 CI 无 ivcore11。"
+    "notes": "CoreX 支持以 meson -Dcorex(默认 false)开关引入 nvcc-wrapper,默认构建不变;fp16 arch gate 改为 defined(__ILUVATAR__)||(__CUDA_ARCH__>=530),NVIDIA 分支不变——作为 opt-in CoreX 后端可直接提 PR(nvcc-wrapper 脚本属 CoreX 专属)。CLA 需签,上游 CI 无 ivcore11。"
   },
   "bugfixes": [],
   "github": {
@@ -37,7 +37,7 @@
   "summary": "将 lc0 国际象棋引擎的 CUDA 后端迁移到 Iluvatar CoreX (ivcore11)：用 clang++ -x ivcore 替代缺失的 nvcc，旁路 fp16 的 __CUDA_ARCH__>=530 门控。编译成功，plain-CUDA 与 cuDNN 后端均注册可用；完整 gtest 套件 52/52 通过。",
   "key_adaptations": [
     "新增 scripts/corex_nvcc_wrapper.sh 作为 nvcc 替身，翻译 nvcc flag 到 clang++ -x ivcore --cuda-gpu-arch=ivcore11，剥离 -arch/-gencode/-Xcompiler 等 nvcc-only 选项",
-    "meson.build 新增 -Dcorex_ivcore11 开关以启用 CoreX clang++ 编译路径，不影响上游 NVIDIA 构建",
+    "meson.build 新增 -Dcorex 开关以启用 CoreX clang++ 编译路径，不影响上游 NVIDIA 构建",
     "fp16_kernels.cu 用 defined(__ILUVATAR__) 旁路 __CUDA_ARCH__>=530 门控，避免真实 fp16 kernel 被静默裁成空壳",
     "启用 cudnn+plain_cuda，关闭 Ampere-only 的 CUTLASS；链接 CoreX 的 libcudnn.so.7/libcublas.so.10/libcudart.so.10.2"
   ]

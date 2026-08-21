@@ -270,7 +270,7 @@ option('nvcc',
        value: true,
        description: 'Use nvcc: required for cuda, optional for onnx')
 
-option('corex_ivcore11',
+option('corex',
        type: 'boolean',
        value: false,
        description: 'Build .cu via CoreX clang++ (-x ivcore) wrapper instead of nvcc (Iluvatar ivcore11)')

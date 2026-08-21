@@ -6,7 +6,7 @@ export CUDA_VISIBLE_DEVICES=0
 
 # .cu compiled by scripts/corex_nvcc_wrapper.sh (clang++ -x ivcore --cuda-gpu-arch=ivcore11)
 CC=clang CXX=clang++ meson setup build \
-  -Dcorex_ivcore11=true \
+  -Dcorex=true \
   -Dplain_cuda=true \
   -Dcudnn=true \
   -Dcutlass=false \

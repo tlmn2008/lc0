@@ -24,7 +24,7 @@ lc0 是国际象棋引擎，含多种神经网络推理后端。其 CUDA 相关�
 1. **nvcc → clang++（红线：禁用 nvcc）**：新增 `scripts/corex_nvcc_wrapper.sh` 作为 nvcc 的替身。它：
    - 对 meson 的 `-h`/`--dryrun` 探测返回合理结果（不宣告 sm_XX/-arch=native，从而 CUTLASS 因 max_cuda=0 自动关闭）；
    - 把真实编译命令翻译为 `clang++ -x ivcore --cuda-path=/usr/local/corex --cuda-gpu-arch=ivcore11 -fPIC`，剥离 `-arch/-gencode/-code/-Wno-deprecated-gpu-targets/-Xptxas/--use_fast_math/-maxrregcount` 等 nvcc-only flag，`-Xcompiler -fPIC` 翻译为 `-fPIC`，`--std=c++NN` 翻译为 `-std=c++NN`。
-   - 在 `meson.build` 中新增 `-Dcorex_ivcore11` 开关（默认 false，不影响上游 NVIDIA 构建）来启用该 wrapper。
+   - 在 `meson.build` 中新增 `-Dcorex` 开关（默认 false，不影响上游 NVIDIA 构建）来启用该 wrapper。
 2. **fp16 arch gate 旁路**：`src/neural/backends/cuda/fp16_kernels.cu` 的 `#if __CUDA_ARCH__ >= 530` / `< 530` 门控，在 ivcore11（设备端 `__CUDA_ARCH__` 报 300）下会把真实 fp16 kernel body 静默裁成空壳（`SKIP_FP16_BITS`）。依据 `iluvatar-cuda-base` 索引「NV 530/700 数值 gate 静默裁掉 fp16 路径」，改为 `#if defined(__ILUVATAR__) || (__CUDA_ARCH__ >= 530)` 与 `#if !defined(__ILUVATAR__) && (__CUDA_ARCH__ < 530)`。
 3. **构建选项**：`-Dplain_cuda=true -Dcudnn=true -Dcutlass=false -Dgtest=true`，`cudnn_libdirs=/usr/local/corex/lib64`、`cudnn_include=/usr/local/corex/include`。
 4. **double/float64**：源码中的 `double` 仅出现在 host 端（`layers.cc` 的 `numeric_limits<double>::quiet_NaN()`、`network_cudnn.cc` 的计时统计），无设备端 `double` 算术，无需注释；未触发精度红线。
